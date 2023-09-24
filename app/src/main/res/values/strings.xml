@@ -1,3 +1,7 @@
 <resources>
-    <string name="app_name">TravailPratique1</string>
+    <string name="app_name">TravailPratique1-ToupetFlorentin</string>
+        <string name="titre_application">Restaurant Reservation App</string>
+        <string name="places_restantes">Remaining Places: %1$d</string>
+        <string name="btn_reserver">Reserve a Table</string>
+        <string name="btn_afficher_reservations">View Reservations</string>
 </resources>
