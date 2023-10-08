@@ -1,7 +1,24 @@
 <resources>
     <string name="app_name">TravailPratique1-ToupetFlorentin</string>
-        <string name="titre_application">Restaurant Reservation App</string>
-        <string name="places_restantes">Remaining Places: %1$d</string>
-        <string name="btn_reserver">Reserve a Table</string>
-        <string name="btn_afficher_reservations">View Reservations</string>
+    <string name="titre_application">Reservo Table</string>
+    <string name="places_restantes">Remaining Places: %1$d</string>
+    <string name="btn_reserver">RESERVE A TABLE</string>
+    <string name="btn_afficher_reservations">VIEW RESERVATIONS</string>
+    <string name="titre_reservation">Réservation de table</string>
+    <string name="nom_restaurant">Nom du restaurant :</string>
+<!--    <string name="places_restantes2">Places restantes :</string>-->
+    <string name="places_restantes2">Places restantes: %1$d</string>
+    <string name="date_reservation">Date de réservation :</string>
+    <string name="choisir_date">Choisir une date</string>
+    <string name="nombre_places">Nombre de places réservées :</string>
+    <string name="progression_places">Progression : %1$d places</string>
+    <string name="choisir_heure">Choisir l\'heure de réservation :</string>
+    <string name="heure_debut">Heure de début :</string>
+    <string name="heure_fin">Heure de fin :</string>
+    <string name="nom_personne">Nom de la personne :</string>
+    <string name="numero_telephone">Numéro de téléphone :</string>
+    <string name="btn_faire_reservation">Faire la réservation</string>
+    <string name="message_reservation_ok">Réservation sauvegardée !</string>
+    <string name="message_pas_de_place">Il n\'y a pas assez de places pour la réservation.</string>
+
 </resources>

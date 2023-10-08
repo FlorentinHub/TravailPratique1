@@ -6,24 +6,33 @@
     android:orientation="vertical"
     android:background="@color/couleur_arriere_plan">
 
-    <!-- Image d'en-tête -->
-    <ImageView
-        android:id="@+id/imgHeader"
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:src="@drawable/votre_image_header"
-        android:scaleType="fitCenter"
-        android:layout_gravity="center"/>
+        android:background="@color/couleur_buttonRouge"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme">
 
-    <!-- Titre de l'application -->
-    <TextView
-        android:id="@+id/tvTitre"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/titre_application"
-        android:textSize="24dp"
+        <TextView
+            android:id="@+id/tvTitre"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:fontFamily="@font/audiowide"
+            android:text="@string/titre_application"
+            android:textSize="34sp" />
+    </androidx.appcompat.widget.Toolbar>
+
+    <ImageView
+        android:id="@+id/imgHeader"
+        android:layout_width="361dp"
+        android:layout_height="294dp"
         android:layout_gravity="center"
-        android:layout_marginTop="16dp"/>
+        android:scaleType="fitCenter"
+        android:src="@drawable/freetablereservation" />
+
+
 
     <!-- Liste déroulante des restaurants -->
     <Spinner
@@ -43,18 +52,49 @@
         android:layout_marginTop="16dp"/>
 
     <!-- Boutons pour accéder aux autres activités -->
+<!--    <Button-->
+<!--        android:id="@+id/btnReserver"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginTop="16dp"-->
+<!--        android:backgroundTint="@color/couleur_buttonRouge"-->
+<!--        android:text="@string/btn_reserver"-->
+<!--        android:textSize="18dp"-->
+<!--        android:textStyle="bold"-->
+<!--        android:theme="@style/TextAppearance.Compat.Notification" />-->
+
+<!--    <Button-->
+<!--        android:id="@+id/btnAfficherReservations"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginTop="8dp"-->
+<!--        android:backgroundTint="@color/couleur_buttonRouge"-->
+<!--        android:text="@string/btn_afficher_reservations"-->
+<!--        android:textSize="18dp"-->
+<!--        android:textStyle="bold"-->
+<!--        android:theme="@style/TextAppearance.Compat.Notification" />-->
+
     <Button
         android:id="@+id/btnReserver"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/btn_reserver"
-        android:layout_marginTop="16dp"/>
+        style="@style/BoutonRougeStyle"
+        android:text="@string/btn_reserver" />
 
     <Button
         android:id="@+id/btnAfficherReservations"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/btn_afficher_reservations"
-        android:layout_marginTop="8dp"/>
+        style="@style/BoutonRougeStyle"
+        android:text="@string/btn_afficher_reservations" />
 
+
+
+
+    <TextView
+        android:id="@+id/appTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:layout_marginEnd="1dp"
+        android:layout_marginTop="140dp"
+        android:fontFamily="@font/audiowide"
+        android:text="@string/app_name"
+        android:textSize="17sp" />
 </LinearLayout>

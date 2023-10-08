@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="couleur_arriere_plan">#FFFFFF</color>
-    <color name="couleur_texte_noir">#000000</color>
-    <color name="couleur_texte_rouge">#FF0000</color>
-    <color name="couleur_texte_bleu">#0000FF</color>
+    <color name="couleur_arriere_plan">#e6e1e1</color>
+    <color name="couleur_texte_noir">#2b303a</color>
+    <color name="couleur_texte_rouge">#d64933</color>
+    <color name="couleur_buttonRouge">#b50000</color>
+    <color name="couleur_texte_bleu">#92DCE5</color>
 </resources>

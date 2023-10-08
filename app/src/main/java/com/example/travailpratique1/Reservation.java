@@ -1,9 +1,14 @@
 package com.example.travailpratique1;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
+import androidx.annotation.NonNull;
+
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-public class Reservation {
+public class Reservation implements Parcelable {
     private int noReservation;
     private String dateReservation;
     private int nbPlace;
@@ -22,6 +27,28 @@ public class Reservation {
         this.nomPersonne = nomPersonne;
         this.telPersonne = telPersonne;
     }
+
+    protected Reservation(Parcel in) {
+        noReservation = in.readInt();
+        dateReservation = in.readString();
+        nbPlace = in.readInt();
+        blocReservationDebut = in.readString();
+        blocReservationFin = in.readString();
+        nomPersonne = in.readString();
+        telPersonne = in.readString();
+    }
+
+    public static final Creator<Reservation> CREATOR = new Creator<Reservation>() {
+        @Override
+        public Reservation createFromParcel(Parcel in) {
+            return new Reservation(in);
+        }
+
+        @Override
+        public Reservation[] newArray(int size) {
+            return new Reservation[size];
+        }
+    };
 
     public int getNoReservation() {
         return noReservation;
@@ -78,7 +105,6 @@ public class Reservation {
     public void setTelPersonne(String telPersonne) {
         this.telPersonne = telPersonne;
     }
-
     private String calculerHeureFin(String heureDebut) {
         try {
             SimpleDateFormat sdf = new SimpleDateFormat("HH:mm");
@@ -89,5 +115,21 @@ public class Reservation {
             e.printStackTrace();
             return "";
         }
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(@NonNull Parcel dest, int flags) {
+        dest.writeInt(noReservation);
+        dest.writeString(dateReservation);
+        dest.writeInt(nbPlace);
+        dest.writeString(blocReservationDebut);
+        dest.writeString(blocReservationFin);
+        dest.writeString(nomPersonne);
+        dest.writeString(telPersonne);
     }
 }
