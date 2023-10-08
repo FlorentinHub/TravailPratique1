@@ -68,6 +68,12 @@ public class Reservation implements Parcelable {
     public void setNoReservation(int noReservation) {
         this.noReservation = noReservation;
     }
+    public String getHeureDebut() {
+        return blocReservationDebut;
+    }
+    public String getHeureFin() {
+        return blocReservationFin;
+    }
 
     public String getDateReservation() {
         return dateReservation;
@@ -116,6 +122,8 @@ public class Reservation implements Parcelable {
     public void setTelPersonne(String telPersonne) {
         this.telPersonne = telPersonne;
     }
+
+    //Test d'une methode differente pour classe Reservation
     private String calculerHeureFin(String heureDebut) {
         try {
             SimpleDateFormat sdf = new SimpleDateFormat("HH:mm");

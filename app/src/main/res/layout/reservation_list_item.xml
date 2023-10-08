@@ -9,7 +9,7 @@
         android:id="@+id/imgReservation"
         android:layout_width="64dp"
         android:layout_height="64dp"
-        android:src="@drawable/table_icon" />
+        android:src="@drawable/roundtable" />
 
     <TextView
         android:id="@+id/tvNomPersonne"
