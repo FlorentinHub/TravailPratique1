@@ -75,6 +75,10 @@ public class MainActivity extends AppCompatActivity {
         btnAfficherReservations.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Intent viewReservationsIntent = new Intent(MainActivity.this, ViewReservationsActivity.class);
+        // Ajoutez les données des réservations en tant qu'Extras ici
+                        startActivity(viewReservationsIntent);
+
                 // Implémenter cette partie pour passer à l'activité d'affichage des réservations
                 // en transmettant également l'objet Restaurant sélectionné.
             }

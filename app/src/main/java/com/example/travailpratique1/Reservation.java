@@ -49,6 +49,17 @@ public class Reservation implements Parcelable {
             return new Reservation[size];
         }
     };
+    @Override
+    public String toString() {
+        return "Numéro de réservation : " + noReservation + "\n" +
+                "Date de réservation : " + dateReservation + "\n" +
+                "Nombre de places : " + nbPlace + "\n" +
+                "Bloc de réservation (début) : " + blocReservationDebut + "\n" +
+                "Bloc de réservation (fin) : " + blocReservationFin + "\n" +
+                "Nom de la personne : " + nomPersonne + "\n" +
+                "Téléphone de la personne : " + telPersonne;
+    }
+
 
     public int getNoReservation() {
         return noReservation;

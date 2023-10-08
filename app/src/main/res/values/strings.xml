@@ -6,8 +6,7 @@
     <string name="btn_afficher_reservations">VIEW RESERVATIONS</string>
     <string name="titre_reservation">Réservation de table</string>
     <string name="nom_restaurant">Nom du restaurant :</string>
-<!--    <string name="places_restantes2">Places restantes :</string>-->
-    <string name="places_restantes2">Places restantes: %1$d</string>
+    <string name="places_restantes2">Places réservée(s): %d</string>
     <string name="date_reservation">Date de réservation :</string>
     <string name="choisir_date">Choisir une date</string>
     <string name="nombre_places">Nombre de places réservées :</string>
@@ -20,5 +19,8 @@
     <string name="btn_faire_reservation">Faire la réservation</string>
     <string name="message_reservation_ok">Réservation sauvegardée !</string>
     <string name="message_pas_de_place">Il n\'y a pas assez de places pour la réservation.</string>
+    <string name="choisir_heure_debut">Choisir l\'heure de début</string>
+    <string name="choisir_heure_fin">Heure de fin (Automatique)</string>
+
 
 </resources>

@@ -80,16 +80,29 @@
         app:layout_constraintTop_toBottomOf="@+id/tvProgressionPlaces" />
 
     <EditText
+        android:id="@+id/etHeureDebut"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:focusable="false"
+        android:clickable="true"
+        android:hint="@string/choisir_heure_debut"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/spinnerHeureDebut" />
+
+    <EditText
         android:id="@+id/etHeureFin"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:clickable="false"
         android:focusable="false"
-        android:hint="@string/choisir_heure"
+        android:clickable="false"
+        android:hint="@string/choisir_heure_fin"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/spinnerHeureDebut" />
+        app:layout_constraintTop_toBottomOf="@+id/etHeureDebut" />
+
 
 
     <EditText

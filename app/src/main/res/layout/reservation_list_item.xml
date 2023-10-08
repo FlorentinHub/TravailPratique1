@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <ImageView
+        android:id="@+id/imgReservation"
+        android:layout_width="64dp"
+        android:layout_height="64dp"
+        android:src="@drawable/table_icon" />
+
+    <TextView
+        android:id="@+id/tvNomPersonne"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Nom de la personne" />
+
+    <TextView
+        android:id="@+id/tvNbPlaces"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Nombre de places réservées" />
+
+    <TextView
+        android:id="@+id/tvHeureDebutFin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Heure de début et de fin" />
+
+</LinearLayout>
