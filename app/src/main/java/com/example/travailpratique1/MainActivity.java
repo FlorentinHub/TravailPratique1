@@ -16,6 +16,7 @@ import android.widget.TextView;
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
+    private static final int REQUEST_CODE = 1; //test
     private Spinner spinnerRestaurants;
     private TextView tvPlacesRestantes;
     private Button btnReserver;
@@ -30,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
         // Initialisation des vues
         spinnerRestaurants = findViewById(R.id.spinnerRestaurants);
         tvPlacesRestantes = findViewById(R.id.tvPlacesRestantes);
-        btnReserver = findViewById(R.id.btnReserver);
+        btnReserver = findViewByI d(R.id.btnReserver);
         btnAfficherReservations = findViewById(R.id.btnAfficherReservations);
 
         // Remplissage de la liste déroulante avec des restaurants fictifs
@@ -73,7 +74,8 @@ public class MainActivity extends AppCompatActivity {
                     // Passer l'objet Restaurant à l'activité de réservation
                     Intent reservationIntent = new Intent(MainActivity.this, ReservationActivity.class);
                     reservationIntent.putExtra("selectedRestaurant", selectedRestaurant);
-                    startActivity(reservationIntent);
+//                    startActivity(reservationIntent);
+                    startActivityForResult(reservationIntent, REQUEST_CODE);
                 }
             }
         });
@@ -82,15 +84,15 @@ public class MainActivity extends AppCompatActivity {
         btnAfficherReservations.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.v("Reservations main", "Main:"+reservationList.toString());
-                // Créez un Intent pour démarrer ViewReservationsActivity
+                if(reservationList.isEmpty()){
+
+                }else{
+
+                Log.v("ReservationsMain", "Main:"+reservationList.toString());
                 Intent viewReservationsIntent = new Intent(MainActivity.this, ViewReservationsActivity.class);
-
-                // Ajoutez la liste de réservations à l'Intent en tant qu'extra
                 viewReservationsIntent.putExtra("reservationList", reservationList);
-
-                // Démarrez l'activité ViewReservationsActivity
                 startActivity(viewReservationsIntent);
+                }
             }
         });
     }
@@ -103,5 +105,17 @@ public class MainActivity extends AppCompatActivity {
             return null;
         }
     }
-
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        Reservation reservation = data.getParcelableExtra("myReservation");
+        Log.e("test", "RESUME"); //test
+        if (reservation == null) {
+            Log.e("onActivityResult", "la reservation est nulle:"); //test
+        }else{
+            Log.e("test", "test" + reservation); //test
+            reservationList.add(reservation);
+            Log.i("onActivityResult - Liste Activite: ", "reservationList:\n" +reservationList);
+        }
+    }
 }

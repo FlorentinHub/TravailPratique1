@@ -28,7 +28,8 @@ public class ViewReservationsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_view_reservations);
 
         reservations = getIntent().getParcelableArrayListExtra("reservationList");
-        Log.i("ReservationList", "reservationList"+reservations.toString());
+//        Log.i("ReservationList", "reservationList"+reservations.toString());
+
         //Initiations by ID
         spinnerDates = findViewById(R.id.spinnerDates);
         listViewReservations = findViewById(R.id.listViewReservations);

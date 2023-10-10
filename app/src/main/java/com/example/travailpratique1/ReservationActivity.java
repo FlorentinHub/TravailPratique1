@@ -3,6 +3,7 @@ package com.example.travailpratique1;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.TimePickerDialog;
+import android.content.Intent;
 import android.os.Bundle;
 
 import android.app.DatePickerDialog;
@@ -38,11 +39,14 @@ public class ReservationActivity extends AppCompatActivity {
     private Calendar calendar;
     private int placesReservees = 0;
     private static Set<Integer> numerosDeReservationExistants = new HashSet<>();//NumReservationGenerateur
+    //Creer Reservation vide
+    Reservation reservation;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_reservation);
+
         // Initialisation des vues
         etDate = findViewById(R.id.etDate);
         etHeureDebut = findViewById(R.id.etHeureDebut);
@@ -54,10 +58,13 @@ public class ReservationActivity extends AppCompatActivity {
         seekBarPlaces = findViewById(R.id.seekBarPlaces);
         tvProgressionPlaces = findViewById(R.id.tvProgressionPlaces);
         spinnerHeureDebut = findViewById(R.id.spinnerHeureDebut);
+
         // Initialisation du calendrier
         calendar = Calendar.getInstance();
+
         //Initialisation nb de place
         tvProgressionPlaces.setText("Places réservées : "+placesReservees);
+
 
         String[] heuresDebutOptions = {"16:00", "16:30", "17:00", "17:30", "18:00","18:30", "19:00", "19:00", "20:00", "20:30", "21:00"};
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, heuresDebutOptions);
@@ -75,7 +82,7 @@ public class ReservationActivity extends AppCompatActivity {
 
             private void mettreAJourHeures(String heureChoisie) {
                 // Mettre à jour le texte de l'EditText heureDebut
-                etHeureDebut.setText("Heure d'arrivée : " + heureChoisie);
+                etHeureDebut.setText("Heure d\'arrivée : " + heureChoisie);
 
                 // Calculer l'heure de fin
                 String heureDeDepart = calculerHeureDeDepart(heureChoisie);
@@ -276,10 +283,14 @@ public class ReservationActivity extends AppCompatActivity {
             return;
         }
 
-        Reservation reservation = new Reservation(genererNumeroReservation(), dateReservation, nombrePlaces, heureDebut, nom, numTelephone);
-        ReservationList reservationList = ((MyApp) getApplication()).getReservationList();
-        reservationList.addReservation(reservation);
-        Log.i("Liste de reservations: ", "reservationList: "+reservationList.toString());
+       reservation = new Reservation(genererNumeroReservation(), dateReservation, nombrePlaces, heureDebut, nom, numTelephone);
+//            ReservationList reservationList = ((MyApp) getApplication()).getReservationList();
+//            reservationList.addReservation(reservation);
+
+//        Intent intent = new Intent(this, MainActivity.class);
+//        startActivityForResult(intent, REQUEST_CODE);
+
+//        Log.i("Liste de reservations: ", "reservationList: "+reservationList.toString());
 
         // Affichage reserv dans LogCat pour test
         Toast.makeText(this, "Réservation effectuée!", Toast.LENGTH_SHORT).show();
@@ -293,6 +304,7 @@ public class ReservationActivity extends AppCompatActivity {
 
         // Reset des champs
         resetFields();
+        onBackPressed();
     }
 
     // Méthode pour réinitialiser les champs de l'activité
@@ -303,5 +315,15 @@ public class ReservationActivity extends AppCompatActivity {
         etNumTelephone.setText("");
         seekBarPlaces.setProgress(0);
         tvProgressionPlaces.setText(getString(R.string.places_restantes, 0));
+    }
+    @Override
+    public void onBackPressed() {
+        // renvoie le restaurant à l'activité principale si il n'est pas vide
+        if(reservation!=null){
+            Intent retour = new Intent().putExtra("myReservation", reservation);
+            Log.i("myReservation", "myReservation: "+reservation);
+            setResult(2, retour);
+        }
+        super.onBackPressed();
     }
 }
