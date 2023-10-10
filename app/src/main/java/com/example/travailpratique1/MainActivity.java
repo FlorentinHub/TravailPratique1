@@ -5,19 +5,23 @@ import android.os.Bundle;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.TextView;
+
+import java.util.ArrayList;
+
 public class MainActivity extends AppCompatActivity {
     private Spinner spinnerRestaurants;
     private TextView tvPlacesRestantes;
     private Button btnReserver;
     private Button btnAfficherReservations;
-
     private Restaurant selectedRestaurant;
+    private ArrayList<Reservation> reservationList = new ArrayList<>(); //Ma Liste de reservations que je passe dans mes autres activites
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,11 +49,14 @@ public class MainActivity extends AppCompatActivity {
                 // Mettre à jour le texte des places restantes en fonction du restaurant sélectionné
                 int placesRestantes = selectedRestaurant.getNbPlacesRestantes();
                 tvPlacesRestantes.setText(getString(R.string.places_restantes, placesRestantes));
+
+                int textColor;
                 if (placesRestantes <= 4) {
-                    tvPlacesRestantes.setTextColor(getResources().getColor(android.R.color.holo_red_dark));
+                    textColor = getResources().getColor(R.color.couleur_texte_rouge);
                 } else {
-                    tvPlacesRestantes.setTextColor(getResources().getColor(android.R.color.black));
+                    textColor = getResources().getColor(R.color.couleur_texte_darkBlue);
                 }
+                tvPlacesRestantes.setTextColor(textColor);
             }
 
             @Override
@@ -75,16 +82,18 @@ public class MainActivity extends AppCompatActivity {
         btnAfficherReservations.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Log.v("Reservations main", "Main:"+reservationList.toString());
+                // Créez un Intent pour démarrer ViewReservationsActivity
                 Intent viewReservationsIntent = new Intent(MainActivity.this, ViewReservationsActivity.class);
-        // Ajoutez les données des réservations en tant qu'Extras ici
-                        startActivity(viewReservationsIntent);
 
-                // Implémenter cette partie pour passer à l'activité d'affichage des réservations
-                // en transmettant également l'objet Restaurant sélectionné.
+                // Ajoutez la liste de réservations à l'Intent en tant qu'extra
+                viewReservationsIntent.putExtra("reservationList", reservationList);
+
+                // Démarrez l'activité ViewReservationsActivity
+                startActivity(viewReservationsIntent);
             }
         });
     }
-
     private Restaurant getRestaurantByName(String name) {
         if ("Chez Vincent".equals(name)) {
             return new Restaurant(1, "Chez Vincent", 30);

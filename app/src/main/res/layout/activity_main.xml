@@ -37,9 +37,12 @@
     <!-- Liste déroulante des restaurants -->
     <Spinner
         android:id="@+id/spinnerRestaurants"
+        style="@style/SpinnerStyle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"/>
+        android:layout_marginTop="16dp"
+        android:fadeScrollbars="true"
+        android:textAlignment="center" />
 
     <!-- Texte pour afficher le nombre de places restantes -->
     <TextView

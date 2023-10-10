@@ -277,6 +277,9 @@ public class ReservationActivity extends AppCompatActivity {
         }
 
         Reservation reservation = new Reservation(genererNumeroReservation(), dateReservation, nombrePlaces, heureDebut, nom, numTelephone);
+        ReservationList reservationList = ((MyApp) getApplication()).getReservationList();
+        reservationList.addReservation(reservation);
+        Log.i("Liste de reservations: ", "reservationList: "+reservationList.toString());
 
         // Affichage reserv dans LogCat pour test
         Toast.makeText(this, "Réservation effectuée!", Toast.LENGTH_SHORT).show();
