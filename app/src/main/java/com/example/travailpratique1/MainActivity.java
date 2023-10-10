@@ -12,6 +12,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -31,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
         // Initialisation des vues
         spinnerRestaurants = findViewById(R.id.spinnerRestaurants);
         tvPlacesRestantes = findViewById(R.id.tvPlacesRestantes);
-        btnReserver = findViewByI d(R.id.btnReserver);
+        btnReserver = findViewById(R.id.btnReserver);
         btnAfficherReservations = findViewById(R.id.btnAfficherReservations);
 
         // Remplissage de la liste déroulante avec des restaurants fictifs
@@ -85,9 +86,9 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if(reservationList.isEmpty()){
-
+                //Envoie juste une notif et ne fait rien
+                    Toast.makeText(MainActivity.this, "Aucune reservation dans le systeme", Toast.LENGTH_SHORT).show();
                 }else{
-
                 Log.v("ReservationsMain", "Main:"+reservationList.toString());
                 Intent viewReservationsIntent = new Intent(MainActivity.this, ViewReservationsActivity.class);
                 viewReservationsIntent.putExtra("reservationList", reservationList);

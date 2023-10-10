@@ -97,6 +97,7 @@ public class ViewReservationsActivity extends AppCompatActivity {
     // Méthode pour obtenir une liste de dates distinctes à partir des réservations
     private List<String> getDistinctDates() {
         List<String> dates = new ArrayList<>();
+        Log.e("Reservtest", "test: "+reservations.toString());
         for (Reservation reservation : reservations) {
             if (!dates.contains(reservation.getDateReservation())) {
                 dates.add(reservation.getDateReservation());
