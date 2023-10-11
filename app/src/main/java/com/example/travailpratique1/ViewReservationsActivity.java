@@ -18,7 +18,8 @@ public class ViewReservationsActivity extends AppCompatActivity {
 
     private Spinner spinnerDates;
     private ListView listViewReservations;
-    private List<Reservation> reservations;
+//    private ArrayList<Reservation> reservationList = new ArrayList<>();
+    private ArrayList<Reservation> reservations;
     private ArrayAdapter<String> dateAdapter;
     private ReservationAdapter reservationAdapter;
 
@@ -97,11 +98,17 @@ public class ViewReservationsActivity extends AppCompatActivity {
     // Méthode pour obtenir une liste de dates distinctes à partir des réservations
     private List<String> getDistinctDates() {
         List<String> dates = new ArrayList<>();
-        Log.e("Reservtest", "test: "+reservations.toString());
-        for (Reservation reservation : reservations) {
-            if (!dates.contains(reservation.getDateReservation())) {
-                dates.add(reservation.getDateReservation());
+        Log.d("Reservations List", "Reservations size: " + (reservations != null ? reservations.size() : "null"));
+        Log.d("Reservations List", "test: "+reservations.toString());
+        if (reservations != null) {
+            for (Reservation reservation : reservations) {
+                if (!dates.contains(reservation.getDateReservation())) {
+                    dates.add(reservation.getDateReservation());
+                }
             }
+            Collections.sort(dates);
+        } else {
+            Log.e("Reservations null", "The reservations list is null");
         }
         Collections.sort(dates); // Trie les dates en ordre croissant
         return dates;

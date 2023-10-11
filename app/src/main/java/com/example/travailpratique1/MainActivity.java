@@ -15,6 +15,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
     private static final int REQUEST_CODE = 1; //test
@@ -35,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
         btnReserver = findViewById(R.id.btnReserver);
         btnAfficherReservations = findViewById(R.id.btnAfficherReservations);
 
-        // Remplissage de la liste déroulante avec des restaurants fictifs
+        // Remplissage de la liste déroulante avec les noms des restaurants
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, new String[]{"Chez Vincent", "La Croisée des Chemins"});
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerRestaurants.setAdapter(adapter);
@@ -89,7 +90,7 @@ public class MainActivity extends AppCompatActivity {
                 //Envoie juste une notif et ne fait rien
                     Toast.makeText(MainActivity.this, "Aucune reservation dans le systeme", Toast.LENGTH_SHORT).show();
                 }else{
-                Log.v("ReservationsMain", "Main:"+reservationList.toString());
+                Log.v("ReservationsMain", "Main:\n"+reservationList.toString());
                 Intent viewReservationsIntent = new Intent(MainActivity.this, ViewReservationsActivity.class);
                 viewReservationsIntent.putExtra("reservationList", reservationList);
                 startActivity(viewReservationsIntent);

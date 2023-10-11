@@ -1,4 +1,5 @@
 package com.example.travailpratique1;
+
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,6 +16,7 @@ public class ReservationAdapter extends ArrayAdapter<Reservation> {
 
     public ReservationAdapter(Context context, List<Reservation> reservations) {
         super(context, 0, reservations);
+        this.context = context; // Initialize the context variable
         this.reservations = reservations;
     }
 
@@ -26,6 +28,7 @@ public class ReservationAdapter extends ArrayAdapter<Reservation> {
     public Reservation getReservation(int position) {
         return reservations.get(position);
     }
+
     @Override
     public long getItemId(int position) {
         return position;
@@ -37,16 +40,32 @@ public class ReservationAdapter extends ArrayAdapter<Reservation> {
             LayoutInflater inflater = LayoutInflater.from(context);
             convertView = inflater.inflate(R.layout.reservation_list_item, parent, false);
         }
+
+        // Additional null checks for safety
+        if (convertView == null) {
+            return convertView;
+        }
         Reservation reservation = reservations.get(position);
-        ImageView imageView = convertView.findViewById(R.id.imgReservation); // Votre ImageView pour l'image de la table
+        ImageView imageView = convertView.findViewById(R.id.imgReservation);
         TextView nomPersonneTextView = convertView.findViewById(R.id.etNomPersonne);
         TextView nbPlacesTextView = convertView.findViewById(R.id.tvNbPlaces);
         TextView heuresTextView = convertView.findViewById(R.id.tvHeureDebutFin);
 
-        imageView.setImageResource(R.drawable.roundtable);
-        nomPersonneTextView.setText(reservation.getNomPersonne());
-        nbPlacesTextView.setText(String.valueOf(reservation.getNbPlace()));
-        heuresTextView.setText(reservation.getBlocReservationDebut() + " - " + reservation.getBlocReservationFin());
+        if (imageView != null) {
+            imageView.setImageResource(R.drawable.roundtable);
+        }
+
+        if (nomPersonneTextView != null) {
+            nomPersonneTextView.setText(reservation.getNomPersonne());
+        }
+
+        if (nbPlacesTextView != null) {
+            nbPlacesTextView.setText(String.valueOf(reservation.getNbPlace()));
+        }
+
+        if (heuresTextView != null) {
+            heuresTextView.setText(reservation.getBlocReservationDebut() + " - " + reservation.getBlocReservationFin());
+        }
 
         return convertView;
     }
