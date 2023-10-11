@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical"
+    android:orientation="horizontal"
     android:padding="16dp">
 
     <ImageView
@@ -11,22 +11,29 @@
         android:layout_height="64dp"
         android:src="@drawable/roundtable" />
 
-    <TextView
-        android:id="@+id/tvNomPersonne"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Nom de la personne" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="10dp"
+        android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/tvNbPlaces"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Nombre de places réservées" />
+        <TextView
+            android:id="@+id/tvNomPersonne"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Nom de la personne"
+            android:textStyle="bold" />
 
-    <TextView
-        android:id="@+id/tvHeureDebutFin"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Heure de début et de fin" />
+        <TextView
+            android:id="@+id/tvNbPlaces"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Nombre de places réservées" />
 
+        <TextView
+            android:id="@+id/tvHeureDebutFin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Heure de début et de fin" />
+    </LinearLayout>
 </LinearLayout>

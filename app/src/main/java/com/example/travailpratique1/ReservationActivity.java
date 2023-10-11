@@ -71,6 +71,13 @@ public class ReservationActivity extends AppCompatActivity {
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerHeureDebut.setAdapter(adapter);
 
+        etHeureDebut.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                spinnerHeureDebut.performClick();
+            }
+        });
+
         //HEURE DEBUT:
         // Définir un écouteur pour le Spinner
         spinnerHeureDebut.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -105,7 +112,6 @@ public class ReservationActivity extends AppCompatActivity {
             }
             // Méthode appelée lorsqu'un bouton pour réserver des places est cliqué
             public void onReserverClick(View view) {
-                // Ici, vous pouvez mettre à jour le nombre de places réservées et le texte de tvProgressionPlaces
                 placesReservees++;
                 Log.d("ReserverClick", "Places réservées : " + placesReservees);
                 tvProgressionPlaces.setText("Places réservées : " + placesReservees);
@@ -119,6 +125,13 @@ public class ReservationActivity extends AppCompatActivity {
 
         // Gestion du clic sur le bouton de sélection de la date
         btnDatePicker.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showDatePickerDialog();
+            }
+        });
+        // Gestion du clic sur le etDate
+        etDate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 showDatePickerDialog();
@@ -152,7 +165,7 @@ public class ReservationActivity extends AppCompatActivity {
                         }
                     }
                 }
-                etNumTelephone.removeTextChangedListener(this); // EVITER LA boucle infinie!!
+                etNumTelephone.removeTextChangedListener(this); // EVITER LA boucle infinie
                 etNumTelephone.setText(formattedNumber.toString());
                 etNumTelephone.setSelection(etNumTelephone.getText().length()); // CURSEUR A LA FIN
                 etNumTelephone.addTextChangedListener(this); // REMET le TextWatcher

@@ -47,7 +47,7 @@ public class ReservationAdapter extends ArrayAdapter<Reservation> {
         }
         Reservation reservation = reservations.get(position);
         ImageView imageView = convertView.findViewById(R.id.imgReservation);
-        TextView nomPersonneTextView = convertView.findViewById(R.id.etNomPersonne);
+        TextView nomPersonneTextView = convertView.findViewById(R.id.tvNomPersonne);
         TextView nbPlacesTextView = convertView.findViewById(R.id.tvNbPlaces);
         TextView heuresTextView = convertView.findViewById(R.id.tvHeureDebutFin);
 

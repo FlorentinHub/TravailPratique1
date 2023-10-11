@@ -14,6 +14,8 @@
         <item name="android:layout_marginTop">16dp</item>
         <item name="android:background">@drawable/spinner_background</item>
         <item name="android:spinnerMode">dropdown</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="android:scaleType">fitCenter</item>
         <item name="android:textColor">@color/couleur_texte_noir</item> <!-- Couleur du texte -->
         <item name="android:paddingStart">16dp</item> <!-- Rembourrage à gauche -->
         <item name="android:paddingEnd">16dp</item> <!-- Rembourrage à droite -->
