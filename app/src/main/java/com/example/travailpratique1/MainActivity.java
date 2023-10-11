@@ -25,6 +25,10 @@ public class MainActivity extends AppCompatActivity {
     private Button btnAfficherReservations;
     private Restaurant selectedRestaurant;
     private ArrayList<Reservation> reservationList = new ArrayList<>(); //Ma Liste de reservations que je passe dans mes autres activites
+
+    private ArrayList<Reservation> reservationListRestaurant1 = new ArrayList<>();
+    private ArrayList<Reservation> reservationListRestaurant2 = new ArrayList<>();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -86,14 +90,25 @@ public class MainActivity extends AppCompatActivity {
         btnAfficherReservations.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(reservationList.isEmpty()){
+                ArrayList<Reservation> myList = new ArrayList<>();
+                if (selectedRestaurant.getNoRestaurant() == 1) {
+                    myList= reservationListRestaurant1; //Vincent
+                } else if (selectedRestaurant.getNoRestaurant() == 2) {
+                    myList= reservationListRestaurant2; //Croisee
+                }
+                if(myList.isEmpty()){
                 //Envoie juste une notif et ne fait rien
                     Toast.makeText(MainActivity.this, "Aucune reservation dans le systeme", Toast.LENGTH_SHORT).show();
                 }else{
-                Log.v("ReservationsMain", "Main:\n"+reservationList.toString());
-                Intent viewReservationsIntent = new Intent(MainActivity.this, ViewReservationsActivity.class);
-                viewReservationsIntent.putExtra("reservationList", reservationList);
-                startActivity(viewReservationsIntent);
+                Log.v("ReservationsMain", "Main:\n"+myList.toString());
+
+                    //Affichage pour le user
+                    Toast.makeText(MainActivity.this, "Chargement des réservations pour " + selectedRestaurant.getNomRestaurant() + "...", Toast.LENGTH_SHORT).show();
+
+        //ENVOI DE LA BONNE LISTE POUR L'ACTIVITE
+                        Intent viewReservationsIntent = new Intent(MainActivity.this, ViewReservationsActivity.class);
+                    viewReservationsIntent.putExtra("reservationList", myList);
+                    startActivity(viewReservationsIntent);
                 }
             }
         });
@@ -111,13 +126,21 @@ public class MainActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         Reservation reservation = data.getParcelableExtra("myReservation");
-        Log.e("test", "RESUME"); //test
         if (reservation == null) {
-            Log.e("onActivityResult", "la reservation est nulle:"); //test
-        }else{
-            Log.e("test", "test" + reservation); //test
-            reservationList.add(reservation);
-            Log.i("onActivityResult - Liste Activite: ", "reservationList:\n" +reservationList);
+            Log.e("onActivityResult", "la reservation est nulle:");
+        } else {
+            Log.e("test", "test" + reservation); // test
+            // Vérifie le restaurant associé à la réservation
+            if (selectedRestaurant != null) {
+                if (selectedRestaurant.getNoRestaurant() == 1) {
+                    reservationListRestaurant1.add(reservation); //Vincent
+                    Log.i("reservationListRestaurant1", "reservationListRestaurant1:\n"+reservationListRestaurant1.toString());
+                } else if (selectedRestaurant.getNoRestaurant() == 2) {
+                    reservationListRestaurant2.add(reservation); //Croisee
+                    Log.i("reservationListRestaurant2", "reservationListRestaurant2:\n"+reservationListRestaurant2.toString());
+                }
+            }
+            Log.i("onActivityResult - Liste Activite: ", "reservationList:\n" + reservationList);
         }
     }
 }
