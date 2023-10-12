@@ -89,11 +89,11 @@ public class ReservationActivity extends AppCompatActivity {
 
             private void mettreAJourHeures(String heureChoisie) {
                 // Mettre à jour le texte de l'EditText heureDebut
-                etHeureDebut.setText("Heure d\'arrivée : " + heureChoisie);
+                etHeureDebut.setText(getString(R.string.heureArrivee) + heureChoisie);
 
                 // Calculer l'heure de fin
                 String heureDeDepart = calculerHeureDeDepart(heureChoisie);
-                etHeureFin.setText("Heure de départ : " + heureDeDepart);
+                etHeureFin.setText(getString(R.string.heureDepart)  + heureDeDepart);
             };
 
             //AJOUTER 1H29 POUR HEURE DE FIN
@@ -272,38 +272,32 @@ public class ReservationActivity extends AppCompatActivity {
         String numTelephone = etNumTelephone.getText().toString().trim();
 
         if (dateReservation.isEmpty()) {
-            Toast.makeText(this, "Veuillez sélectionner une date.", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, R.string.erreur_date, Toast.LENGTH_SHORT).show();
             return;
         }
 
         if (nombrePlaces == 0) {
-            Toast.makeText(this, "Veuillez sélectionner le nombre de places.", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, R.string.erreur_places, Toast.LENGTH_SHORT).show();
             return;
         }
 
         if (heureDebut.isEmpty()) {
-            Toast.makeText(this, "Veuillez sélectionner l'heure de début.", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, R.string.erreur_heure_debut, Toast.LENGTH_SHORT).show();
             return;
         }
 
         if (nom.isEmpty()) {
-            Toast.makeText(this, "Veuillez entrer un nom.", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, R.string.erreur_nom, Toast.LENGTH_SHORT).show();
             return;
         }
 
         if (numTelephone.isEmpty()) {
-            Toast.makeText(this, "Veuillez entrer un numéro de téléphone.", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, R.string.erreur_telephone, Toast.LENGTH_SHORT).show();
             return;
         }
 
+
        reservation = new Reservation(genererNumeroReservation(), dateReservation, nombrePlaces, heureDebut, nom, numTelephone);
-//            ReservationList reservationList = ((MyApp) getApplication()).getReservationList();
-//            reservationList.addReservation(reservation);
-
-//        Intent intent = new Intent(this, MainActivity.class);
-//        startActivityForResult(intent, REQUEST_CODE);
-
-//        Log.i("Liste de reservations: ", "reservationList: "+reservationList.toString());
 
         // Affichage reserv dans LogCat pour test
         Toast.makeText(this, "Réservation effectuée!", Toast.LENGTH_SHORT).show();

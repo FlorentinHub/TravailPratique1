@@ -68,8 +68,8 @@ public class ViewReservationsActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Reservation selectedReservation = reservationAdapter.getReservation(position);
-                String message = "Numéro de réservation : " + selectedReservation.getNoReservation() +
-                        "\nNuméro de téléphone : " + selectedReservation.getTelPersonne();
+
+                String message = ((R.string.reservation_number) + selectedReservation.getNoReservation() +"\n"+ (R.string.telephone_number) + selectedReservation.getTelPersonne());
                 Toast.makeText(ViewReservationsActivity.this, message, Toast.LENGTH_SHORT).show();
             }
         });

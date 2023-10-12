@@ -90,12 +90,11 @@ public class MainActivity extends AppCompatActivity {
                 }
                 if (myList.isEmpty()) {
                     //Envoie juste une notif et ne fait rien
-                    Toast.makeText(MainActivity.this, "Aucune reservation dans le systeme", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(MainActivity.this, getResources().getString(R.string.listEmpty), Toast.LENGTH_SHORT).show();
                 } else {
                     Log.v("ReservationsMain", "Main:\n" + myList.toString());
-
                     //Affichage pour le user
-                    Toast.makeText(MainActivity.this, "Chargement des réservations pour " + selectedRestaurant.getNomRestaurant() + "...", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(MainActivity.this,  getResources().getString(R.string.ChargementReserv)+ selectedRestaurant.getNomRestaurant() + "...", Toast.LENGTH_SHORT).show();
 
                     //ENVOI DE LA BONNE LISTE POUR L'ACTIVITE
                     Intent viewReservationsIntent = new Intent(MainActivity.this, ViewReservationsActivity.class);
@@ -212,14 +211,11 @@ public class MainActivity extends AppCompatActivity {
                         reservationListRestaurant2.add(reservation); //Croisee
                         Log.i("reservationListRestaurant2", "reservationListRestaurant2:\n" + reservationListRestaurant2.toString());
                     }
-                    Log.i("selectedRestaurant", "selectedRestaurant: " + selectedRestaurant.getNbPlacesRestantes()); //toDelete
-                    Log.i("selectedRestaurant", "selectedRestaurant: " + selectedRestaurant.getNomRestaurant()); //toDelete
                     getRestaurantByName(selectedRestaurant.getNomRestaurant()).setNbPlacesRestantes(selectedRestaurant.getNbPlacesRestantes() - reservation.getNbPlace());
                     // Mettez à jour le nombre de places restantes
                     int placesRestantes = selectedRestaurant.getNbPlacesRestantes() - reservation.getNbPlace();
                     selectedRestaurant.setNbPlacesRestantes(placesRestantes);
                     changerNbPlaces();
-                    Log.i("selectedRestaurant", "selectedRestaurant: " + selectedRestaurant.getNbPlacesRestantes());//toDelete
                 }
                 Log.i("onActivityResult - Liste Activite: ", "reservationList:\n" + reservationList);
             }

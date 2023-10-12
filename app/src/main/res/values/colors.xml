@@ -4,6 +4,6 @@
     <color name="couleur_texte_noir">#2b303a</color>
     <color name="couleur_texte_rouge">#d64933</color>
     <color name="couleur_buttonRouge">#b50000 </color>
-    <color name="couleur_texte_bleu">#92DCE5</color>
+    <color name="couleur_texte_bleu">#C800FF</color>
     <color name="couleur_texte_darkBlue">#FF0256FF</color>
 </resources>
